@@ -13,4 +13,4 @@ dirPath=/data3/ssmith/ena
 
 echo BEGINNING FASTQC SCRIPT
 
-fastqc "$dirPath"/A_"$SLURM_ARRAY_TASK_ID"*.fq.gz --noextract -t 6 -a /data3/ssmith/raw_data/adaptors_colony.txt --outdir="$sortedPath"/Metrics
+fastqc "$dirPath"/A_"$SLURM_ARRAY_TASK_ID"*.fq.gz --noextract -t 6 -a /data3/ssmith/raw_data/adaptors_colony.txt --outdir=/Metrics
