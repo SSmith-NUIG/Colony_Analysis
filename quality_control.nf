@@ -10,12 +10,11 @@ Reads            : ${params.reads}
 Output-folder    : ${params.outdir}/
 """
 
-// Also channels are being created. 
+// create read channel
 read_pairs_ch = Channel
       .fromFilePairs(params.reads, checkIfExists:true)
       
-// Definition of a process
-// A process being defined, does not mean it's invoked (see workflow)
+// Define fastqc process
 process fastqc {
   publishDir "${params.outdir}/quality-control-${sample}/", mode: 'copy', overwrite: true
   
@@ -31,7 +30,7 @@ process fastqc {
   """
 }
 
-// Running a workflow with the defined processes here.  
+// run the workflow
 workflow {
 	read_pairs_ch.view()
 	fastqc(read_pairs_ch) 
